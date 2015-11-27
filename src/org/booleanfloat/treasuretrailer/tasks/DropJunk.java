@@ -5,8 +5,6 @@ import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.Item;
 
-import java.util.ArrayList;
-
 public class DropJunk extends Task<ClientContext> {
     public DropJunk(ClientContext ctx) {
         super(ctx);
@@ -14,15 +12,17 @@ public class DropJunk extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        return ctx.players.local().animation() == -1
-                && (Resources.isStunned || Resources.isDropping || ctx.inventory.select().count() == 28);
+        return Resources.isStunned
+                || Resources.isDropping
+                || ctx.inventory.select().count() == 28
+                || Resources.hasClue && ctx.inventory.select().id(Resources.HAM_JUNK_IDS).count() > 1;
     }
 
     @Override
     public void execute() {
         Resources.status = "Dropping junk";
 
-        Item item = ctx.inventory.select().id(Resources.HAM_JUNK).peek();
+        Item item = ctx.inventory.select().id(Resources.HAM_JUNK_IDS).peek();
 
         if(ctx.inventory.select().count() == 28) {
             Resources.isDropping = true;

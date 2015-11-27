@@ -20,9 +20,12 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
 
         tasks.addAll(Arrays.asList(
                 new DropJunk(ctx),
+                new OpenCasket(ctx),
                 new Pickpocket(ctx),
+                new RestoreHealth(ctx),
+                new SolveClue(ctx),
                 new Stunned(ctx),
-            new TraverseHamHideout(ctx)
+                new TraverseHamHideout(ctx)
         ));
     }
 
@@ -38,7 +41,7 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
     @Override
     public void repaint(Graphics g) {
         g.setColor(Color.BLACK);
-        g.drawString(Resources.status, 390, 360);
+        g.drawString(Resources.status, 360, 360);
     }
 
     @Override

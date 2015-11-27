@@ -2,7 +2,7 @@ package org.booleanfloat.treasuretrailer.tasks;
 
 import org.booleanfloat.traveler.Path;
 import org.booleanfloat.traveler.Traveler;
-import org.booleanfloat.traveler.regions.Lumbridge;
+import org.booleanfloat.traveler.regions.misthalin.Lumbridge;
 import org.booleanfloat.treasuretrailer.main.Resources;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
@@ -16,7 +16,8 @@ public class TraverseHamHideout extends Task<ClientContext> {
 
     @Override
     public boolean activate() {
-        boolean canActivate = !Lumbridge.HamBarracks.area.contains(ctx.players.local())
+        boolean canActivate = !Resources.hasClue
+                && !Lumbridge.HamBarracks.area.contains(ctx.players.local())
                 && !Lumbridge.HamBarracks.area.contains(ctx.movement.destination());
 
         if(!canActivate) {

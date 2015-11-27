@@ -22,7 +22,7 @@ public class Stunned extends Task<ClientContext> implements MessageListener {
     public void execute() {
         Resources.status = "Stunned";
 
-        if(System.currentTimeMillis() - stunnedTime > 4 * 1000) {
+        if(System.currentTimeMillis() - stunnedTime > 5 * 1000) {
             Resources.isStunned = false;
             stunnedTime = 0;
         }
@@ -30,7 +30,7 @@ public class Stunned extends Task<ClientContext> implements MessageListener {
 
     @Override
     public void messaged(MessageEvent messageEvent) {
-        if(messageEvent.text().contains("You fail to pick")) {
+        if(messageEvent.text().contains("You've been stunned")) {
             Resources.isStunned = true;
             stunnedTime = System.currentTimeMillis();
         }
