@@ -9,18 +9,29 @@ public class SearchClue extends Clue {
         BOXES, DRAWERS
     }
 
-    private int objectId;
+    private int[] objectIds;
     private Tile objectTile;
 
     public SearchClue(int id, Location location, int objectId) {
         super(id, location);
-        this.objectId = objectId;
+        this.objectIds = new int[]{ objectId };
+    }
+
+    public SearchClue(int id, Location location, int objectId1, int objectId2) {
+        super(id, location);
+        this.objectIds = new int[] { objectId1, objectId2 };
     }
 
     public SearchClue(int id, Location location, int objectId, Tile objectTile) {
         this(id, location, objectId);
         this.objectTile = objectTile;
     }
+
+    public SearchClue(int id, Location location, int objectId1, int objectId2, Tile objectTile) {
+        this(id, location, objectId1, objectId2);
+        this.objectTile = objectTile;
+    }
+
 
     @Override
     public boolean canSolve(ClientContext ctx) {
@@ -34,10 +45,10 @@ public class SearchClue extends Clue {
         }
 
         if(objectTile == null) {
-            return ctx.objects.select().id(objectId).nearest().poll().interact("Search");
+            return ctx.objects.select().id(objectIds).nearest().poll().click();
         }
         else {
-            return ctx.objects.select().id(objectId).at(objectTile).poll().interact("Search");
+            return ctx.objects.select().id(objectIds).at(objectTile).poll().click();
         }
     }
 }

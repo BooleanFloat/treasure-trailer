@@ -4,6 +4,7 @@ import org.booleanfloat.traveler.Traveler;
 import org.booleanfloat.treasuretrailer.tasks.*;
 import org.powerbot.script.*;
 import org.powerbot.script.rt4.ClientContext;
+import org.powerbot.script.rt4.Equipment;
 
 import java.awt.*;
 import java.util.*;
@@ -15,12 +16,14 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
     @Override
     public void start() {
         Traveler.init(ctx);
+        Resources.initClues();
 
         Resources.status = "starting";
 
         tasks.addAll(Arrays.asList(
                 new DropJunk(ctx),
                 new OpenCasket(ctx),
+                new OpenClue(ctx),
                 new Pickpocket(ctx),
                 new RecordReward(ctx),
                 new RestoreHealth(ctx),

@@ -13,6 +13,10 @@ public abstract class Clue {
         this.location = location;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public Location getLocation() {
         return location;
     }
