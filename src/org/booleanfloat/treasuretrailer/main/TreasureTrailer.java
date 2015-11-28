@@ -22,9 +22,11 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
                 new DropJunk(ctx),
                 new OpenCasket(ctx),
                 new Pickpocket(ctx),
+                new RecordReward(ctx),
                 new RestoreHealth(ctx),
                 new SolveClue(ctx),
                 new Stunned(ctx),
+                new TraverseBank(ctx),
                 new TraverseHamHideout(ctx)
         ));
     }

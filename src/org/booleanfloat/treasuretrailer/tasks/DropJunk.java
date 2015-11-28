@@ -30,7 +30,6 @@ public class DropJunk extends Task<ClientContext> {
 
         if(item.id() != -1) {
             item.interact("Drop");
-            System.out.println(item.name());
             Condition.sleep(400);
         }
         else {
