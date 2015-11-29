@@ -4,6 +4,7 @@ import org.booleanfloat.treasuretrailer.main.Resources;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.Constants;
+import org.powerbot.script.rt4.Game;
 
 public class RestoreHealth extends Task<ClientContext> {
     private int maxHealth = ctx.skills.realLevel(Constants.SKILLS_HITPOINTS);
@@ -21,6 +22,8 @@ public class RestoreHealth extends Task<ClientContext> {
     @Override
     public void execute() {
         Resources.status = "Eating food";
+
+        ctx.game.tab(Game.Tab.INVENTORY);
 
         if(ctx.inventory.select().id(Resources.FOOD_IDS).poll().click()) {
             Condition.sleep(600);

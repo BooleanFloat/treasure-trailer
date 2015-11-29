@@ -27,7 +27,14 @@ public class SolveClue extends Task<ClientContext> {
         Resources.status = "Solving clue";
 
         Clue clue = Resources.CLUES.get(ctx.inventory.select().id(Resources.CLUE_IDS).poll().id());
+        if(clue == null) {
+            Resources.hasClue = false;
+            Resources.hasSeenClue = false;
+            currentClue = null;
+            return;
+        }
         if(currentClue == null || currentClue.getId() != clue.getId()) {
+            path = null;
             currentClue = clue;
             Resources.hasSeenClue = false;
             return;
@@ -43,7 +50,7 @@ public class SolveClue extends Task<ClientContext> {
             }
 
             if(path.traverse(ctx)) {
-                Condition.wait(Traveler.getConditionWaiter(ctx, path), 1000, 8);
+                Condition.wait(Traveler.getConditionWaiter(ctx, path), 500, 8);
                 return;
             }
         }

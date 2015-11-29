@@ -51,7 +51,7 @@ public class RecordReward extends Task<ClientContext> {
 
         print();
         Resources.hasClue = false;
-        Resources.hasLoot = true;
+//        Resources.hasLoot = true;
     }
 
     public void print() {

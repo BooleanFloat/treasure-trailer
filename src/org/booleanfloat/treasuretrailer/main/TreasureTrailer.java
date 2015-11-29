@@ -1,6 +1,9 @@
 package org.booleanfloat.treasuretrailer.main;
 
 import org.booleanfloat.traveler.Traveler;
+import org.booleanfloat.traveler.regions.asgarnia.Falador;
+import org.booleanfloat.traveler.regions.misthalin.Lumbridge;
+import org.booleanfloat.traveler.regions.misthalin.Varrock;
 import org.booleanfloat.treasuretrailer.tasks.*;
 import org.powerbot.script.*;
 import org.powerbot.script.rt4.ClientContext;
@@ -21,15 +24,15 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
         Resources.status = "starting";
 
         tasks.addAll(Arrays.asList(
-                new DropJunk(ctx),
-                new OpenCasket(ctx),
-                new OpenClue(ctx),
-                new Pickpocket(ctx),
-                new RecordReward(ctx),
                 new RestoreHealth(ctx),
                 new SolveClue(ctx),
+                new OpenCasket(ctx),
+                new OpenClue(ctx),
+                new RecordReward(ctx),
                 new Stunned(ctx),
-                new TraverseBank(ctx),
+                new Pickpocket(ctx),
+                new DropJunk(ctx),
+//                new TraverseBank(ctx),
                 new TraverseHamHideout(ctx)
         ));
     }
@@ -46,7 +49,13 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
     @Override
     public void repaint(Graphics g) {
         g.setColor(Color.BLACK);
-        g.drawString(Resources.status, 360, 360);
+        g.setColor(new Color(203, 186, 149));
+        g.fillRect(355, 350, 137, 105);
+        g.setColor(Color.black);
+        g.drawString(Resources.status, 360, 364);
+        g.drawString("isStunned: " + Resources.isStunned, 360, 380);
+        g.drawString("hasClue: " + Resources.hasClue, 360, 396);
+        g.drawString("hasSeenClue: " + Resources.hasSeenClue, 360, 412);
     }
 
     @Override

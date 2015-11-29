@@ -4,6 +4,7 @@ import org.booleanfloat.traveler.regions.misthalin.Lumbridge;
 import org.booleanfloat.treasuretrailer.main.Resources;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
+import org.powerbot.script.rt4.Game;
 import org.powerbot.script.rt4.HintArrow;
 import org.powerbot.script.rt4.Npc;
 
@@ -30,12 +31,14 @@ public class Pickpocket extends Task<ClientContext> {
     public void execute() {
         Resources.status = "Pickpocketing";
 
+        ctx.game.tab(Game.Tab.INVENTORY);
+
         if(HamMember != null && !HamMember.inViewport()) {
             HamMember = null;
         }
 
         if(HamMember == null || !HamMember.valid()) {
-            HamMember = ctx.npcs.select().id(Resources.HAM_MEMBERS_IDS).nearest().poll();
+            HamMember = ctx.npcs.select().id(Resources.HAM_MEMBERS_IDS).within(Lumbridge.HamBarracks.area).nearest().poll();
         }
 
         if(HamMember.interact("Pickpocket")) {

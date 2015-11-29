@@ -2,6 +2,7 @@ package org.booleanfloat.treasuretrailer.tasks;
 
 import org.booleanfloat.treasuretrailer.main.Resources;
 import org.powerbot.script.rt4.ClientContext;
+import org.powerbot.script.rt4.Game;
 
 public class OpenCasket extends Task<ClientContext> {
     public OpenCasket(ClientContext ctx) {
@@ -15,6 +16,7 @@ public class OpenCasket extends Task<ClientContext> {
 
     @Override
     public void execute() {
+        ctx.game.tab(Game.Tab.INVENTORY);
         ctx.inventory.poll().click();
     }
 }

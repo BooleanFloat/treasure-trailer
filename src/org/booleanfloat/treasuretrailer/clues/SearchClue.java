@@ -45,6 +45,7 @@ public class SearchClue extends Clue {
         }
 
         if(objectTile == null) {
+            System.out.println(ctx.objects.select().id(objectIds).nearest().poll());
             return ctx.objects.select().id(objectIds).nearest().poll().click();
         }
         else {

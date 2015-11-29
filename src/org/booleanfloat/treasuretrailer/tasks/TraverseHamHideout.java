@@ -6,6 +6,7 @@ import org.booleanfloat.traveler.regions.misthalin.Lumbridge;
 import org.booleanfloat.treasuretrailer.main.Resources;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
+import org.powerbot.script.rt4.Game;
 
 public class TraverseHamHideout extends Task<ClientContext> {
     private Path path;
@@ -31,6 +32,8 @@ public class TraverseHamHideout extends Task<ClientContext> {
     @Override
     public void execute() {
         Resources.status = "Going to Ham hideout";
+
+        ctx.game.tab(Game.Tab.INVENTORY);
 
         if(path == null) {
             path = Traveler.getPath(ctx.players.local().tile(), Lumbridge.HamBarracks);
