@@ -4,34 +4,33 @@ import org.booleanfloat.traveler.Location;
 import org.powerbot.script.Tile;
 import org.powerbot.script.rt4.ClientContext;
 
-public class SearchClue extends Clue {
-    public enum type {
-        BOXES, DRAWERS
-    }
+import java.util.concurrent.Callable;
 
+public class SearchClue extends Clue {
     private int[] objectIds;
     private Tile objectTile;
 
-    public SearchClue(int id, Location location, int objectId) {
+    public SearchClue(int id, Location location, int[] objectIds) {
         super(id, location);
-        this.objectIds = new int[]{ objectId };
+        this.objectIds = objectIds;
     }
 
-    public SearchClue(int id, Location location, int objectId1, int objectId2) {
-        super(id, location);
-        this.objectIds = new int[] { objectId1, objectId2 };
+    public SearchClue(int id, Location location, int[] objectIds, Callable<Boolean> requirement) {
+        super(id, location, requirement);
+        this.objectIds = objectIds;
     }
 
-    public SearchClue(int id, Location location, int objectId, Tile objectTile) {
-        this(id, location, objectId);
+    public SearchClue(int id, Location location, int[] objectIds, Tile objectTile) {
+        super(id, location);
+        this.objectIds = objectIds;
         this.objectTile = objectTile;
     }
 
-    public SearchClue(int id, Location location, int objectId1, int objectId2, Tile objectTile) {
-        this(id, location, objectId1, objectId2);
+    public SearchClue(int id, Location location, int[] objectIds, Tile objectTile, Callable<Boolean> requirement) {
+        super(id, location, requirement);
+        this.objectIds = objectIds;
         this.objectTile = objectTile;
     }
-
 
     @Override
     public boolean canSolve(ClientContext ctx) {

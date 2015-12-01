@@ -7,13 +7,19 @@ import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.Component;
 import org.powerbot.script.rt4.Game;
 
+import java.util.concurrent.Callable;
+
 public class EmoteClue extends Clue {
     private int[] itemIds;
     private Resources.Emote emote;
     private boolean equipNothing;
 
     public EmoteClue(int id, Location location, Resources.Emote emote, int[] itemIds) {
-        super(id, location);
+        this(id, location, emote, itemIds, null);
+    }
+
+    public EmoteClue(int id, Location location, Resources.Emote emote, int[] itemIds, Callable<Boolean> requirement) {
+        super(id, location, requirement);
 
         this.itemIds = itemIds;
         this.emote = emote;
@@ -21,7 +27,11 @@ public class EmoteClue extends Clue {
     }
 
     public EmoteClue(int id, Location location, Resources.Emote emote, boolean equipNothing) {
-        super(id, location);
+        this(id, location, emote, equipNothing, null);
+    }
+
+    public EmoteClue(int id, Location location, Resources.Emote emote, boolean equipNothing, Callable<Boolean> requirement) {
+        super(id, location, requirement);
 
         this.itemIds = new int[0];
         this.emote = emote;

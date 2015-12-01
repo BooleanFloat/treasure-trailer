@@ -38,7 +38,7 @@ public class Pickpocket extends Task<ClientContext> {
         }
 
         if(HamMember == null || !HamMember.valid()) {
-            HamMember = ctx.npcs.select().id(Resources.HAM_MEMBERS_IDS).within(Lumbridge.HamBarracks.area).nearest().poll();
+            HamMember = ctx.npcs.select().within(Lumbridge.HamBarracks.area).id(Resources.HAM_MEMBERS_IDS).nearest().poll();
         }
 
         if(HamMember.interact("Pickpocket")) {

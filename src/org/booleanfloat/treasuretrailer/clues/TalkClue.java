@@ -4,11 +4,17 @@ import org.booleanfloat.traveler.Location;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
 
+import java.util.concurrent.Callable;
+
 public class TalkClue extends Clue {
     public int npcId;
 
     public TalkClue(int id, Location location, int npcId) {
-        super(id, location);
+        this(id, location, npcId, null);
+    }
+
+    public TalkClue(int id, Location location, int npcId, Callable<Boolean> requirement) {
+        super(id, location, requirement);
         this.npcId = npcId;
     }
 

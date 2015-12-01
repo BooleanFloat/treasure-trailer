@@ -40,8 +40,14 @@ public class SolveClue extends Task<ClientContext> {
             return;
         }
 
-        if(!clue.canSolve(ctx)) {
+        if(!clue.canSolve(ctx) || !clue.hasRequirements()) {
             System.out.println("drop clue");
+            ctx.inventory.select().id(Resources.CLUE_IDS).poll().interact("Drop");
+            Resources.hasClue = false;
+            Resources.hasSeenClue = false;
+            currentClue = null;
+            Condition.sleep(500);
+            return;
         }
 
         if(!clue.getLocation().area.contains(ctx.players.local())) {

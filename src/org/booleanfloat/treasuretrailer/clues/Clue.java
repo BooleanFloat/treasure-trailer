@@ -4,13 +4,21 @@ import org.booleanfloat.traveler.Location;
 import org.booleanfloat.treasuretrailer.main.Resources;
 import org.powerbot.script.rt4.ClientContext;
 
+import java.util.concurrent.Callable;
+
 public abstract class Clue {
     protected int id;
     protected Location location;
+    protected Callable<Boolean> requirement;
 
     public Clue(int id, Location location) {
+        this(id, location, null);
+    }
+
+    public Clue(int id, Location location, Callable<Boolean> requirement) {
         this.id = id;
         this.location = location;
+        this.requirement = requirement;
     }
 
     public int getId() {
@@ -19,6 +27,19 @@ public abstract class Clue {
 
     public Location getLocation() {
         return location;
+    }
+
+    public boolean hasRequirements() {
+        if(requirement != null) {
+            try {
+                return requirement.call();
+            }
+            catch (Exception e) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public abstract boolean canSolve(ClientContext ctx);

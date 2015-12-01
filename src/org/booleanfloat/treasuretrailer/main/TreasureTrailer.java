@@ -19,7 +19,7 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
     @Override
     public void start() {
         Traveler.init(ctx);
-        Resources.initClues();
+        Resources.initClues(ctx);
 
         Resources.status = "starting";
 
