@@ -1,6 +1,7 @@
 package org.booleanfloat.treasuretrailer.tasks;
 
 import org.booleanfloat.treasuretrailer.main.Resources;
+import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.Item;
 import org.powerbot.script.rt4.Widget;
@@ -47,6 +48,7 @@ public class RecordReward extends Task<ClientContext> {
             }
         }
 
+        Condition.sleep(2000);
         clueRewardWidget.component(3).click();
 
         print();

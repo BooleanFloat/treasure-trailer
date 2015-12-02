@@ -27,6 +27,7 @@ public class Resources {
     public static final int AMBASSADOR_SPANFIPPLE_ID = 0;
     public static final int ARHEIN_ID = 1032;
     public static final int ELLIS_ID = 3231;
+    public static final int DORIS_ID = 4808;
     public static final int JATIX_ID = 1174;
     public static final int LOUISA_ID = 4215;
     public static final int LUCY_ID = 5795;
@@ -125,6 +126,7 @@ public class Resources {
     public static HashMap<Integer, Clue> CLUES = new HashMap<>();
     public static int[] CLUE_IDS;
     public static void initClues(ClientContext ctx) {
+        // 15/28 Emote clues
         CLUES.put(10180, new EmoteClue(10180, Lumbridge.SwampShack, Emote.DANCE, new int[] { BRONZE_DAGGER, IRON_FULL_HELM, GOLD_RING }));
         CLUES.put(10182, new EmoteClue(10182, WizardsTower.Causeway, Emote.CLAP, new int[] { IRON_MEDIUM_HELM, EMERALD_RING, WHITE_APRON }));
         CLUES.put(10194, new EmoteClue(10194, AlKharid.Mine, Emote.HEADBANG, new int[] { DESERT_SHIRT, LEATHER_GLOVES, LEATHER_BOOTS}));
@@ -173,6 +175,7 @@ public class Resources {
             }
         }));
 
+        // 7/7 map clues
         CLUES.put(2713, new DigClue(2713, Varrock.RiverDigSpot, new Tile(3167, 3360 ,0)));
         CLUES.put(2716, new DigClue(2716, Varrock.SouthMineDigSpot, new Tile(3289, 3374, 0)));
         CLUES.put(2719, new DigClue(2719, Falador.NorthFencedStones, new Tile(3043, 3398, 0)));
@@ -181,6 +184,7 @@ public class Resources {
         CLUES.put(7236, new DigClue(7236, Falador.NorthSquare, new Tile(2970, 3414, 0)));
         CLUES.put(12179, new DigClue(12179, AlKharid.MineDigSpot, new Tile(3300, 3291, 0)));
 
+        // 39/79 cryptic clues
         CLUES.put(2677, new SearchClue(2677, LumbridgeCastle.DukesRoom, new int [] { 375, 378 }));
         CLUES.put(2679, new SearchClue(2679, Lumbridge.GoblinHouse, new int[] { 359 }));
         CLUES.put(2682, new SearchClue(2682, AlKharid.NorthHouse, new int[] { 358 }));
@@ -189,6 +193,10 @@ public class Resources {
         CLUES.put(2691, new SearchClue(2691, Falador.ShieldStoreUpstairs, new int[] { 348, 349 }));
         CLUES.put(2694, new SearchClue(2694, Falador.ChainMailStore, new int[] { 348, 349 }, new Tile(2969, 3311, 0)));
         CLUES.put(2703, new SearchClue(2703, SeersVillage.CastleSouthWestTower, new int[] { 25592, 25593 }));
+        CLUES.put(2705, new SearchClue(2705, EastArdougne.MarketArmourStoreOutside, new int [] { 361 }));
+        CLUES.put(2706, new SearchClue(2706, EastArdougne.GeneralStore, new int[] { 357 }));
+        CLUES.put(2707, new SearchClue(2707, EastArdougne.NorthShed, new int[] { 355 }));
+        CLUES.put(2710, new SearchClue(2710, EastArdougne.PubUpstairs, new int[] { 348, 349 }));
         CLUES.put(3490, new SearchClue(3490, Burthorpe.NorthEastHouse, new int[] { 348, 349 }));
         CLUES.put(3492, new SearchClue(3492, Yanille.HunterStore, new int[] { 350, 351 }));
         CLUES.put(3493, new SearchClue(3493, DwarvenMine.CrossbowStore, new int[] { 375, 378 }));
@@ -201,6 +209,7 @@ public class Resources {
         CLUES.put(3508, new SearchClue(3508, SeersVillage.SpinningHouse, new int[] { 25766, 25767 }));
         CLUES.put(3509, new SearchClue(3509, SeersVillage.SouthHouse, new int[] { 25775 }));
         CLUES.put(3515, new SearchClue(3515, VarrockCastle.Kitchen, new int[] { 2608 } ));
+        CLUES.put(12174, new SearchClue(12174, Edgeville.CoffinHouse, new int[] { 398, 399 }, new Tile(3091, 3477, 0)));
         CLUES.put(12175, new SearchClue(12175, Varrock.DigSiteBush, new int[] { 2357 }, new Tile(3345, 3378, 0)));
         CLUES.put(12176, new SearchClue(12176, Varrock.WestBankBasementClueSpot, new int[] { 2571 }, new Tile(3187, 9825, 0)));
         CLUES.put(12178, new SearchClue(12178, DwarvenMine.OreStore, new int[] { 357 }, new Tile(3035, 9849, 0)));
@@ -215,6 +224,7 @@ public class Resources {
         CLUES.put(2702, new TalkClue(2702, SeersVillage.CastleCourtyard, SIR_KAY_ID));
         CLUES.put(3513, new TalkClue(3513, SeersVillage.SinclairMansionKitchen, LOUISA_ID));
         CLUES.put(12169, new TalkClue(12169, Falador.PartyRoomUpstairs, LUCY_ID));
+        CLUES.put(12173, new TalkClue(12173, Edgeville.EvilDavesHouse, DORIS_ID));
         CLUES.put(12182, new TalkClue(12182, Falador.CastleThroneRoom, AMBASSADOR_SPANFIPPLE_ID));
         CLUES.put(12184, new TalkClue(12184, Taverly.HerbloreStore, JATIX_ID));
 

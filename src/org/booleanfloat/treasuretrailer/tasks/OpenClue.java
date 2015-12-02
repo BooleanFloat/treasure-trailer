@@ -18,6 +18,7 @@ public class OpenClue extends Task<ClientContext> {
     @Override
     public boolean activate() {
         return !Resources.hasSeenClue
+                && !Resources.isDropping
                 && !ctx.inventory.select().id(Resources.CLUE_IDS).isEmpty();
     }
 
