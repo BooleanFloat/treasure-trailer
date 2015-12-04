@@ -18,7 +18,7 @@ public class DropJunk extends Task<ClientContext> {
                 && (Resources.isStunned
                 || Resources.isDropping
                 || ctx.inventory.select().count() == 28
-                || Resources.hasClue && ctx.inventory.select().id(Resources.HAM_JUNK_IDS).count() > 1);
+                || Resources.hasClue && ctx.inventory.select().id(Resources.HAM_JUNK_IDS).count() >= 1);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class DropJunk extends Task<ClientContext> {
 
         Item item = ctx.inventory.select().id(Resources.HAM_JUNK_IDS).peek();
 
-        if(ctx.inventory.select().count() == 28) {
+        if(ctx.inventory.select().count() == 28 || Resources.hasClue) {
             Resources.isDropping = true;
         }
 

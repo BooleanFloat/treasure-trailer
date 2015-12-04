@@ -54,8 +54,9 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
         g.setColor(Color.black);
         g.drawString(Resources.status, 360, 364);
         g.drawString("isStunned: " + Resources.isStunned, 360, 380);
-        g.drawString("hasClue: " + Resources.hasClue, 360, 396);
-        g.drawString("hasSeenClue: " + Resources.hasSeenClue, 360, 412);
+        g.drawString("isDropping: " + Resources.isDropping, 360, 396);
+        g.drawString("hasClue: " + Resources.hasClue, 360, 412);
+        g.drawString("hasSeenClue: " + Resources.hasSeenClue, 360, 428);
     }
 
     @Override
