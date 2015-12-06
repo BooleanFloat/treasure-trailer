@@ -45,8 +45,20 @@ public class OpenClue extends Task<ClientContext> {
             }, 250, 4);
         }
         else {
+            Component closeButton = null;
+            for(Component component : widget.components()) {
+                if(component.textureId() == 539) {
+                    closeButton = component;
+                    break;
+                }
+            }
+
             Resources.hasSeenClue = true;
             Condition.sleep(2000);
+
+            if(closeButton != null) {
+                closeButton.click();
+            }
         }
     }
 }
