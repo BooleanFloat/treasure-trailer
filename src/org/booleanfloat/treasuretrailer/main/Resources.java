@@ -32,6 +32,7 @@ public class Resources {
     public static final int ELLIS_ID = 3231;
     public static final int DORIC_ID = 3893;
     public static final int DORIS_ID = 4808;
+    public static final int GAIUS_ID = 1173;
     public static final int HAIRDRESSER_ID = 1305;
     public static final int JATIX_ID = 1174;
     public static final int JEED_ID = 3351;
@@ -60,7 +61,7 @@ public class Resources {
     public static final int[] CASKET_IDS = {
             2714, 2717, 2720, 3511, 3517, 3519, 7237, 10181, 10183, 10187,
             10191, 10195, 10201, 10203, 10205, 10207, 10209, 10211, 10213,
-            10219, 10221, 10225, 10229, 10231, 12165, 12171, 12180
+            10215, 10219, 10221, 10225, 10229, 10231, 12165, 12171, 12180
     };
 
     public static final int CLUE_REWARD_WIDGET_ID = 364;
@@ -81,8 +82,9 @@ public class Resources {
     public static final int BLUE_ROBE_TOP = 640;
     public static final int BLUE_WIZARD_HAT = 579;
     public static final int BRONZE_AXE = 1351;
-    public static final int BRONZE_CHAINBODY = 110;
+    public static final int BRONZE_CHAINBODY = 1103;
     public static final int BRONZE_DAGGER = 1205;
+    public static final int BRONZE_FULL_HELM = 1155;
     public static final int BRONZE_PLATELEGS = 1075;
     public static final int BRONZE_SPEAR = 1237;
     public static final int BRONZE_TWO_HANDED_SWORD = 1307;
@@ -94,6 +96,7 @@ public class Resources {
     public static final int GOLD_RING = 1635;
     public static final int GREEN_BOOTS = 628;
     public static final int GREEN_HAT = 658;
+    public static final int GREEN_ROBE_BOTTOMS = 648;
     public static final int GREEN_ROBE_TOP = 638;
     public static final int HAM_BOOTS = 4310;
     public static final int HAM_CLOAK = 4304;
@@ -120,6 +123,7 @@ public class Resources {
     public static final int SAPPHIRE_NECKLACE = 1656;
     public static final int SAPPHIRE_RING = 1637;
     public static final int STAFF = 1379;
+    public static final int STEEL_AXE = 1353;
     public static final int STEEL_FULL_HELM = 1157;
     public static final int STEEL_LONGSWORD = 1295;
     public static final int STEEL_MACE = 1424;
@@ -169,14 +173,15 @@ public class Resources {
     public static HashMap<Integer, Clue> CLUES = new HashMap<>();
     public static int[] CLUE_IDS;
     public static void initClues(ClientContext ctx) {
-        // 98/114 Clues
+        // 108/114 Clues
         CLUES.put(10180, new EmoteClue(10180, Lumbridge.SwampShack, Emote.DANCE, new int[] { BRONZE_DAGGER, IRON_FULL_HELM, GOLD_RING }));
         CLUES.put(10182, new EmoteClue(10182, WizardsTower.Causeway, Emote.CLAP, new int[] { IRON_MEDIUM_HELM, EMERALD_RING, WHITE_APRON }));
-        CLUES.put(10184, new EmoteClue(10184, Draynor.Market, Emote.YAWN, new int[]{STUDDED_CHAPS, IRON_KITESHIELD, STEEL_LONGSWORD}, checkLevels(ctx, 5, 20, 20, 0)));
+        CLUES.put(10184, new EmoteClue(10184, Draynor.Market, Emote.YAWN, new int[]{ STUDDED_CHAPS, IRON_KITESHIELD, STEEL_LONGSWORD }, checkLevels(ctx, 5, 0, 20, 0)));
         CLUES.put(10186, new EmoteClue(10186, Varrock.LimeStoneMine, Emote.PANIC, new int[] { BRONZE_PLATELEGS, STEEL_PICKAXE, STEEL_MEDIUM_HELM }, checkLevels(ctx, 5, 5, 0, 0)));
         CLUES.put(10190, new EmoteClue(10190, PortSarim.MudskipperPoint, Emote.WAVE, new int [] { BLACK_CAPE, LEATHER_CHAPS, STEEL_MACE }));
         CLUES.put(10192, new EmoteClue(10192, PortSarim.EntranaBoat, Emote.CHEER, new int[] { COIF, STEEL_PLATESKIRT, SAPPHIRE_NECKLACE }, checkLevels(ctx, 0, 5, 20, 0)));
         CLUES.put(10194, new EmoteClue(10194, AlKharid.Mine, Emote.HEADBANG, new int[] { DESERT_SHIRT, LEATHER_GLOVES, LEATHER_BOOTS}));
+        CLUES.put(10196, new EmoteClue(10196, Draynor.ManorFountain, Emote.SPIN, new int[] { IRON_PLATEBODY, STUDDED_CHAPS, BRONZE_FULL_HELM }, checkLevels(ctx, 0, 0, 20, 0)));
         CLUES.put(10200, new EmoteClue(10200, Draynor.CrossRoads, Emote.DANCE, new int[] { IRON_CHAINBODY, SAPPHIRE_RING, LONGBOW }));
         CLUES.put(10202, new EmoteClue(10202, Rimmington.Mine, Emote.SHRUG, new int[] { GOLD_NECKLACE, GOLD_RING, BRONZE_SPEAR }));
         CLUES.put(10204, new EmoteClue(10204, VarrockCastle.Library, Emote.YAWN, new int[] { GREEN_ROBE_TOP, HAM_ROBE, IRON_WARHAMMER }));
@@ -184,6 +189,7 @@ public class Resources {
         CLUES.put(10208, new EmoteClue(10208, Falador.PartyRoom, Emote.DANCE, new int[] { STEEL_FULL_HELM, STEEL_PLATEBODY, IRON_PLATESKIRT }, checkLevels(ctx, 0, 5, 0, 0)));
         CLUES.put(10210, new EmoteClue(10210, Taverly.DruidsCircle, Emote.CHEER, new int[] { BLUE_WIZARD_HAT, BRONZE_TWO_HANDED_SWORD, HAM_BOOTS }));
         CLUES.put(10212, new EmoteClue(10212, Burthorpe.GamesRoom, Emote.CHEER, true));
+        CLUES.put(10214, new EmoteClue(10214, Catherby.Beehives, Emote.JUMP, new int[] { GREEN_ROBE_BOTTOMS, DESERT_SHIRT, STEEL_AXE }, checkLevels(ctx, 5, 0, 0, 0)));
         CLUES.put(10216, new EmoteClue(10216, EastArdougne.ZooMonkeyCage, Emote.RASPBERRY, new int[] { STUDDED_BODY, BRONZE_PLATELEGS, STAFF }, checkLevels(ctx, 0, 20, 20, 0)));
         CLUES.put(10218, new EmoteClue(10218, Rimmington.NorthCrossRoads, Emote.SPIN, new int[] { GREEN_HAT, CREAM_ROBE_TOP, LEATHER_CHAPS }));
         CLUES.put(10220, new EmoteClue(10220, EastArdougne.FishingGuildEntrance, Emote.JIG, new int[] { EMERALD_RING, SAPPHIRE_AMULET, BRONZE_CHAINBODY }));
@@ -210,6 +216,7 @@ public class Resources {
         CLUES.put(2680, new SearchClue(2680, AlKharid.PalaceChests, new int[] { 375, 378 }, new Tile(3301, 3169, 1)));
         CLUES.put(2682, new SearchClue(2682, AlKharid.NorthHouse, new int[] { 358 }));
         CLUES.put(2685, new SearchClue(2685, Varrock.SouthGateHouse, new int[] { 2586 }));
+        CLUES.put(2687, new SearchClue(2687, Varrock.EastBankUpstairs, new int[] { 4499, 4500 }));
         CLUES.put(2688, new SearchClue(2688, Varrock.HorviksArmoury, new int[] { 2570 }));
         CLUES.put(2689, new SearchClue(2689, Varrock.GertrudesBedroom, new int[] { 4499, 4500 }));
         CLUES.put(2690, new SearchClue(2690, BarbarianVillage.HelmetStore, new int[] { 11600 }, new Tile(3073, 3430, 0)));
@@ -223,6 +230,7 @@ public class Resources {
         CLUES.put(2706, new SearchClue(2706, EastArdougne.GeneralStore, new int[] { 357 }));
         CLUES.put(2707, new SearchClue(2707, EastArdougne.NorthShed, new int[] { 355 }));
         CLUES.put(2708, new SearchClue(2708, Varrock.ClothesStoreUpstairs, new int[] { 4499, 4500 }));
+        CLUES.put(2709, new SearchClue(2709, VarrockCastle.Cart, new int[] { 2571 }));
         CLUES.put(2710, new SearchClue(2710, EastArdougne.PubUpstairs, new int[] { 348, 349 }));
         CLUES.put(2711, new SearchClue(2711, EastArdougne.ChurchTower, new int[] { 357 }));
         CLUES.put(2712, new SearchClue(2712, Falador.EastBankHouse, new int[] { 24088 }, new Tile(3029, 3355, 0)));
@@ -235,6 +243,7 @@ public class Resources {
         CLUES.put(3499, new SearchClue(3499, Taverly.TwoHandedSwordStore, new int[] { 360 }, new Tile(2886, 3449, 0)));
         CLUES.put(3500, new SearchClue(3500, Taverly.SouthHouse, new int[] { 350, 351 }));
         CLUES.put(3501, new SearchClue(3501, AlKharid.Tent, new int[] { 361 }));
+        CLUES.put(3502, new SearchClue(3502, Draynor.ManorAttic, new int[] { 11485 }, new Tile(3106, 3369, 2)));
         CLUES.put(3503, new SearchClue(3503, Burthorpe.Tent, new int[] { 3686 }));
         CLUES.put(3504, new SearchClue(3504, PortKhazard.Cart, new int[] { 366 }));
         CLUES.put(3505, new SearchClue(3505, EastArdougne.MarketNorthHouseUpstairs, new int[] { 352, 353 }));
@@ -247,10 +256,12 @@ public class Resources {
         CLUES.put(12174, new SearchClue(12174, Edgeville.CoffinHouse, new int[] { 398, 399 }, new Tile(3091, 3477, 0)));
         CLUES.put(12175, new SearchClue(12175, Varrock.DigSiteBush, new int[] { 2357 }, new Tile(3345, 3378, 0)));
         CLUES.put(12176, new SearchClue(12176, Varrock.WestBankBasementClueSpot, new int[] { 2571 }, new Tile(3187, 9825, 0)));
+        CLUES.put(12177, new SearchClue(12177, Edgeville.MonasteryClueBookcase, new int[] { 380 }));
         CLUES.put(12178, new SearchClue(12178, DwarvenMine.OreStore, new int[] { 357 }, new Tile(3035, 9849, 0)));
         CLUES.put(12167, new SearchClue(12167, WizardsTower.Library, new int[] { 12539 }, new Tile(3113, 3159, 0)));
         CLUES.put(12168, new SearchClue(12168, Draynor.WitchAgiesHouse, new int [] { 5622, 5623 }));
         CLUES.put(12185, new SearchClue(12185, Burthorpe.Pub, new int[] { 354 }, new Tile(2913, 3536, 0)));
+        CLUES.put(12188, new SearchClue(12188, PortSarim.NorthHouse, new int[] { 348, 349 }, new Tile(3024, 3259, 0)));
         CLUES.put(12189, new SearchClue(12189, Rimmington.Mine, new int[] { 9625 }));
         CLUES.put(12191, new SearchClue(12191, Taverly.Outhouse, new int[] { 357 }));
         CLUES.put(12192, new SearchClue(12192, PortSarim.ShantyPassCell, new int [] { 9568 }));
@@ -261,6 +272,7 @@ public class Resources {
         CLUES.put(2696, new TalkClue(2696, PortSarim.RustyAnchor, RUSTY_ANCHOR_BARTENDER_ID));
         CLUES.put(2697, new TalkClue(2697, Draynor.NedsHouse, NED_ID));
         CLUES.put(2698, new TalkClue(2694, Falador.DoricsHouse, DORIC_ID));
+        CLUES.put(2699, new TalkClue(2699, Taverly.TwoHandedSwordStore, GAIUS_ID));
         CLUES.put(2701, new TalkClue(2701, Catherby.GeneralStore, ARHEIN_ID));
         CLUES.put(2702, new TalkClue(2702, SeersVillage.CastleCourtyard, SIR_KAY_ID));
         CLUES.put(3496, new TalkClue(3496, PortSarim.MusaPointBoat, CAPTION_TOBIAS_ID));

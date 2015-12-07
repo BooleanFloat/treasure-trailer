@@ -25,23 +25,25 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
 
         tasks.addAll(Arrays.asList(
                 new RestoreHealth(ctx),
-                new SolveClue(ctx),
+                new Stunned(ctx),
+                new DropJunk(ctx),
                 new OpenCasket(ctx),
                 new OpenClue(ctx),
+                new SolveClue(ctx),
                 new RecordReward(ctx),
-                new Stunned(ctx),
-                new Pickpocket(ctx),
-                new DropJunk(ctx),
-//                new TraverseBank(ctx),
-                new TraverseHamHideout(ctx)
+                new TraverseHamHideout(ctx),
+                new Pickpocket(ctx)
+                //                new TraverseBank(ctx),
         ));
     }
 
     @Override
     public void poll() {
+        Resources.status = "-";
         for (Task task : tasks) {
             if (task.activate()) {
                 task.execute();
+                break;
             }
         }
     }
