@@ -41,6 +41,7 @@ public class Resources {
     public static final int NED_ID = 4280;
     public static final int RUSTY_ID = 3281;
     public static final int RUSTY_ANCHOR_BARTENDER_ID = 1313;
+    public static final int SARAH_ID = 501;
     public static final int SIR_KAY_ID = 3521;
     public static final int SQUIRE_ID = 4737;
     public static final int URI_ID = 1774;
@@ -59,9 +60,10 @@ public class Resources {
     };
 
     public static final int[] CASKET_IDS = {
-            2714, 2717, 2720, 3511, 3517, 3519, 7237, 10181, 10183, 10187,
-            10191, 10195, 10201, 10203, 10205, 10207, 10209, 10211, 10213,
-            10215, 10219, 10221, 10225, 10229, 10231, 12165, 12171, 12180
+            2714, 2717, 2720, 3511, 3517, 3519, 7237, 12171, 12180, 10181,
+            10183, 10185, 10187, 10189, 10191, 10193, 10195, 10197, 10201,
+            10203, 10205, 10207, 10209, 10211, 10213, 10215, 10217, 10219,
+            10221, 10223, 10225, 10229, 10231, 10233, 12163, 12165,
     };
 
     public static final int CLUE_REWARD_WIDGET_ID = 364;
@@ -91,6 +93,7 @@ public class Resources {
     public static final int COIF = 1169;
     public static final int CREAM_ROBE_TOP = 642;
     public static final int DESERT_SHIRT = 1833;
+    public static final int EMERALD_AMULET = 1696;
     public static final int EMERALD_RING = 1639;
     public static final int GOLD_NECKLACE = 1654;
     public static final int GOLD_RING = 1635;
@@ -109,6 +112,7 @@ public class Resources {
     public static final int IRON_CHAINBODY = 1101;
     public static final int IRON_FULL_HELM = 1153;
     public static final int IRON_PLATEBODY = 1115;
+    public static final int IRON_PLATELEGS = 1067;
     public static final int IRON_PLATESKIRT = 1081;
     public static final int IRON_KITESHIELD = 1191;
     public static final int IRON_MEDIUM_HELM = 1137;
@@ -118,6 +122,7 @@ public class Resources {
     public static final int LEATHER_GLOVES = 1059;
     public static final int LONGBOW = 839;
     public static final int MIRTHIL_PICKAXE = 1273;
+    public static final int OAK_LONGBOW = 845;
     public static final int RUBY_RING = 1641;
     public static final int SAPPHIRE_AMULET = 1694;
     public static final int SAPPHIRE_NECKLACE = 1656;
@@ -173,11 +178,12 @@ public class Resources {
     public static HashMap<Integer, Clue> CLUES = new HashMap<>();
     public static int[] CLUE_IDS;
     public static void initClues(ClientContext ctx) {
-        // 108/114 Clues
+        // 112/114 Clues
         CLUES.put(10180, new EmoteClue(10180, Lumbridge.SwampShack, Emote.DANCE, new int[] { BRONZE_DAGGER, IRON_FULL_HELM, GOLD_RING }));
         CLUES.put(10182, new EmoteClue(10182, WizardsTower.Causeway, Emote.CLAP, new int[] { IRON_MEDIUM_HELM, EMERALD_RING, WHITE_APRON }));
         CLUES.put(10184, new EmoteClue(10184, Draynor.Market, Emote.YAWN, new int[]{ STUDDED_CHAPS, IRON_KITESHIELD, STEEL_LONGSWORD }, checkLevels(ctx, 5, 0, 20, 0)));
         CLUES.put(10186, new EmoteClue(10186, Varrock.LimeStoneMine, Emote.PANIC, new int[] { BRONZE_PLATELEGS, STEEL_PICKAXE, STEEL_MEDIUM_HELM }, checkLevels(ctx, 5, 5, 0, 0)));
+        CLUES.put(10188, new EmoteClue(10188, EastArdougne.LegendsGuildEntrance, Emote.BOW, new int[] { IRON_PLATELEGS, EMERALD_AMULET, OAK_LONGBOW }, checkLevels(ctx, 0, 0, 5, 0)));
         CLUES.put(10190, new EmoteClue(10190, PortSarim.MudskipperPoint, Emote.WAVE, new int [] { BLACK_CAPE, LEATHER_CHAPS, STEEL_MACE }));
         CLUES.put(10192, new EmoteClue(10192, PortSarim.EntranaBoat, Emote.CHEER, new int[] { COIF, STEEL_PLATESKIRT, SAPPHIRE_NECKLACE }, checkLevels(ctx, 0, 5, 20, 0)));
         CLUES.put(10194, new EmoteClue(10194, AlKharid.Mine, Emote.HEADBANG, new int[] { DESERT_SHIRT, LEATHER_GLOVES, LEATHER_BOOTS}));
@@ -211,7 +217,8 @@ public class Resources {
         CLUES.put(12170, new DigClue(12170, Falador.NorthFencedStones, new Tile(3040, 3399, 0)));
         CLUES.put(12179, new DigClue(12179, AlKharid.MineDigSpot, new Tile(3300, 3291, 0)));
 
-        CLUES.put(2677, new SearchClue(2677, LumbridgeCastle.DukesRoom, new int [] { 375, 378 }));
+        CLUES.put(2677, new SearchClue(2677, LumbridgeCastle.DukesRoom, new int[] { 375, 378 }));
+        CLUES.put(2678, new SearchClue(2678, LumbridgeCastle.SouthTowerUpstairs, new int[] { 357 }));
         CLUES.put(2679, new SearchClue(2679, Lumbridge.GoblinHouse, new int[] { 359 }));
         CLUES.put(2680, new SearchClue(2680, AlKharid.PalaceChests, new int[] { 375, 378 }, new Tile(3301, 3169, 1)));
         CLUES.put(2682, new SearchClue(2682, AlKharid.NorthHouse, new int[] { 358 }));
@@ -239,6 +246,7 @@ public class Resources {
         CLUES.put(3492, new SearchClue(3492, Yanille.HunterStore, new int[] { 350, 351 }));
         CLUES.put(3493, new SearchClue(3493, DwarvenMine.CrossbowStore, new int[] { 375, 378 }));
         CLUES.put(3494, new SearchClue(3494, Rimmington.EastHouseUpstairs, new int[] { 352, 353 }));
+        CLUES.put(3495, new SearchClue(3495, PortSarim.FoodStoreUpstairs, new int[] { 375, 378 }, new Tile(3016, 3205, 1)));
         CLUES.put(3498, new SearchClue(3498, Falador.EastHouseUpstairs, new int[] { 350, 351 }));
         CLUES.put(3499, new SearchClue(3499, Taverly.TwoHandedSwordStore, new int[] { 360 }, new Tile(2886, 3449, 0)));
         CLUES.put(3500, new SearchClue(3500, Taverly.SouthHouse, new int[] { 350, 351 }));
@@ -284,6 +292,7 @@ public class Resources {
         CLUES.put(12182, new TalkClue(12182, Falador.CastleThroneRoom, AMBASSADOR_SPANFIPPLE_ID));
         CLUES.put(12183, new TalkClue(12183, Falador.Barber, HAIRDRESSER_ID));
         CLUES.put(12184, new TalkClue(12184, Taverly.HerbloreStore, JATIX_ID));
+        CLUES.put(12186, new TalkClue(12186, Falador.Farm, SARAH_ID));
         CLUES.put(12187, new TalkClue(12187, Falador.Rusty, RUSTY_ID));
 
         CLUE_IDS = new int[CLUES.size()];

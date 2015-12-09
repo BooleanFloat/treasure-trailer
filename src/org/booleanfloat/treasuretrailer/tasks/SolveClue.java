@@ -40,6 +40,11 @@ public class SolveClue extends Task<ClientContext> {
             return;
         }
 
+        if(!Resources.hasSeenClue) {
+            path = null;
+            return;
+        }
+
         if(!clue.canSolve(ctx) || !clue.hasRequirements()) {
             System.out.println("drop clue");
             ctx.inventory.select().id(Resources.CLUE_IDS).poll().interact("Drop");
