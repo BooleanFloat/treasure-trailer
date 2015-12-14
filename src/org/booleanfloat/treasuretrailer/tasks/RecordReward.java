@@ -1,5 +1,6 @@
 package org.booleanfloat.treasuretrailer.tasks;
 
+import org.booleanfloat.traveler.Traveler;
 import org.booleanfloat.treasuretrailer.main.Resources;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
@@ -48,10 +49,14 @@ public class RecordReward extends Task<ClientContext> {
             }
         }
 
+        print();
+
         Condition.sleep(2000);
         clueRewardWidget.component(3).click();
+        Condition.sleep(500);
 
-        print();
+        Traveler.getPathToNearestBank(ctx.players.local().tile());
+
         Resources.hasClue = false;
 //        Resources.hasLoot = true;
     }
