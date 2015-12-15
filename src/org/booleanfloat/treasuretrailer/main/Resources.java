@@ -36,6 +36,7 @@ public class Resources {
     public static final int HAIRDRESSER_ID = 1305;
     public static final int JATIX_ID = 1174;
     public static final int JEED_ID = 3351;
+    public static final int LADY_OF_THE_LAKE_ID = 3530;
     public static final int LOUISA_ID = 4215;
     public static final int LUCY_ID = 5795;
     public static final int NED_ID = 4280;
@@ -236,6 +237,7 @@ public class Resources {
         CLUES.put(2695, new SearchClue(2695, PortSarim.FishingStore, new int[] { 9534 }));
         CLUES.put(2700, new SearchClue(2700, Catherby.ArcheryStore, new int[] { 350, 351 }));
         CLUES.put(2703, new SearchClue(2703, SeersVillage.CastleSouthWestTower, new int[] { 25592, 25593 }));
+        CLUES.put(2704, new SearchClue(2704, EastArdougne.GuardsHouse, new int[] { 356 }, new Tile(2645, 3338, 0)));
         CLUES.put(2705, new SearchClue(2705, EastArdougne.MarketArmourStoreOutside, new int [] { 361 }));
         CLUES.put(2706, new SearchClue(2706, EastArdougne.GeneralStore, new int[] { 357 }));
         CLUES.put(2707, new SearchClue(2707, EastArdougne.NorthShed, new int[] { 355 }));
@@ -300,6 +302,7 @@ public class Resources {
         CLUES.put(12184, new TalkClue(12184, Taverly.HerbloreStore, JATIX_ID));
         CLUES.put(12186, new TalkClue(12186, Falador.Farm, SARAH_ID));
         CLUES.put(12187, new TalkClue(12187, Falador.Rusty, RUSTY_ID));
+        CLUES.put(12190, new TalkClue(12190, Taverly.LadyOfTheLake, LADY_OF_THE_LAKE_ID));
 
         CLUE_IDS = new int[CLUES.size()];
         Object[] keys = CLUES.keySet().toArray();
