@@ -14,7 +14,7 @@ import java.util.*;
 
 @Script.Manifest(name="Treasure Trailer", description="Pickpockets HAM members for easy clues and solves them.")
 public class TreasureTrailer extends PollingScript<ClientContext> implements PaintListener, MessageListener {
-    private java.util.List<Task> tasks = new ArrayList<>();
+    private java.util.List<Task> tasks = new ArrayList<Task>();
 
     @Override
     public void start() {
@@ -50,8 +50,7 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
 
     @Override
     public void repaint(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.setColor(new Color(203, 186, 149));
+        g.setColor(Color.LIGHT_GRAY);
         g.fillRect(355, 350, 137, 105);
         g.setColor(Color.black);
         g.drawString(Resources.status, 360, 364);
@@ -59,6 +58,10 @@ public class TreasureTrailer extends PollingScript<ClientContext> implements Pai
         g.drawString("isDropping: " + Resources.isDropping, 360, 396);
         g.drawString("hasClue: " + Resources.hasClue, 360, 412);
         g.drawString("hasSeenClue: " + Resources.hasSeenClue, 360, 428);
+
+        for(Task task : tasks){
+            task.paint(g);
+        }
     }
 
     @Override

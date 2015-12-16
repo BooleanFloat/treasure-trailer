@@ -12,7 +12,7 @@ public class Bank extends Task<ClientContext> {
     public Bank(ClientContext ctx) {
         super(ctx);
 
-        baseInventory = new HashMap<>();
+        baseInventory = new HashMap<Integer, Integer>();
         baseInventory.put(995, 5000);
         baseInventory.put(563, 25);
         baseInventory.put(556, 100);

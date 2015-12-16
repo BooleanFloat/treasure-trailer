@@ -2,21 +2,27 @@ package org.booleanfloat.treasuretrailer.tasks;
 
 import org.booleanfloat.traveler.Traveler;
 import org.booleanfloat.treasuretrailer.main.Resources;
+import org.booleanfloat.treasuretrailer.util.GeItem;
+import org.booleanfloat.treasuretrailer.util.RewardItem;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt4.ClientContext;
 import org.powerbot.script.rt4.Item;
 import org.powerbot.script.rt4.Widget;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.*;
+import java.util.*;
 
 public class RecordReward extends Task<ClientContext> {
-    private HashMap<String, Integer> rewards;
+    private Collection<RewardItem> bestRewards;
+    private HashMap<Integer, RewardItem> rewards;
+    private int totalValue;
 
     public RecordReward(ClientContext ctx) {
         super(ctx);
 
-        rewards = new HashMap<>();
+        rewards = new HashMap<Integer, RewardItem>();
+        bestRewards = new ArrayList<RewardItem>();
+        totalValue = 0;
     }
 
     @Override
@@ -33,24 +39,25 @@ public class RecordReward extends Task<ClientContext> {
         int[] itemStacks = clueRewardWidget.component(1).itemStackSizes();
 
         for(int i = 0; i < itemIds.length; i++) {
-            if(itemIds[i] == -1) {
+            int itemId = itemIds[i];
+
+            if(itemId == -1) {
                 break;
             }
 
-            Item item = new Item(ctx, clueRewardWidget.component(1), itemIds[i], itemStacks[i]);
+            if(Arrays.asList(Resources.NOTED_REWARD_IDS).contains(itemId)) {
+                itemId -= 1;
+            }
 
-            Integer amount = rewards.get(item.name());
-
-            if(amount == null) {
-                rewards.put(item.name(), itemStacks[i]);
+            if(rewards.containsKey(itemId)) {
+                rewards.get(itemId).addAmount(itemStacks[i]);
             }
             else {
-                rewards.put(item.name(), amount + itemStacks[i]);
+                rewards.put(itemId, new RewardItem(ctx, itemId, itemStacks[i]));
             }
         }
 
-        print();
-
+        updateRewards();
         Condition.sleep(2000);
         clueRewardWidget.component(3).click();
         Condition.sleep(500);
@@ -59,13 +66,61 @@ public class RecordReward extends Task<ClientContext> {
 
         Resources.hasClue = false;
 //        Resources.hasLoot = true;
+        print();
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        int index = 0;
+
+        g.drawString("Value: " + totalValue, 360, 444);
+
+        g.setColor(Color.LIGHT_GRAY);
+        g.setFont(new Font("Verdana", Font.PLAIN, 10));
+        g.fillRect(206, 350, 144, 105);
+
+        for (RewardItem reward : bestRewards) {
+            if(reward.getName().length() == 0) {
+                continue;
+            }
+
+            int x = index % 4 * 36 + 208;
+            int y = (int) Math.floor(index / 4) * 35 + 352;
+
+            g.drawImage(reward.getIcon(), x, y, 32, 32, null);
+
+            g.setColor(Color.BLACK);
+            g.drawString("" + reward.getAmount(), x + 1, y + 9);
+            g.setColor(Color.YELLOW);
+            g.drawString("" + reward.getAmount(), x, y + 8);
+
+            index++;
+        }
     }
 
     public void print() {
         System.out.println("Rewards:");
-        for (Map.Entry<String, Integer> reward : rewards.entrySet()) {
-            System.out.println("\t" + reward.getKey() + ": " + reward.getValue());
+        for (RewardItem reward : rewards.values()) {
+            System.out.println("\t" + reward.toString());
         }
         System.out.println("\n");
+    }
+
+    private void updateRewards() {
+        ArrayList<RewardItem> items = new ArrayList<RewardItem>(rewards.values());
+
+        Comparator<RewardItem> comparator = new Comparator<RewardItem>() {
+            public int compare(RewardItem c1, RewardItem c2) {
+                return c2.getValue() - c1.getValue();
+            }
+        };
+
+        Collections.sort(items, comparator);
+        bestRewards = items;
+
+        totalValue = 0;
+        for(RewardItem item : items) {
+            totalValue += item.getValue();
+        }
     }
 }

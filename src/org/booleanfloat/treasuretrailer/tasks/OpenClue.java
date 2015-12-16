@@ -28,7 +28,7 @@ public class OpenClue extends Task<ClientContext> {
 
         ctx.game.tab(Game.Tab.INVENTORY);
 
-        Widget widget = ctx.widgets.select().id(Resources.CLUE_WIDGET_IDS).select(new Filter<Widget>() {
+        final Widget widget = ctx.widgets.select().id(Resources.CLUE_WIDGET_IDS).select(new Filter<Widget>() {
             @Override
             public boolean accept(Widget widget) {
                 return widget.component(0).visible();

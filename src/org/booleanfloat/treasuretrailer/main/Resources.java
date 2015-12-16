@@ -60,6 +60,10 @@ public class Resources {
             4306, 4308, 4310
     };
 
+    public static final int[] NOTED_REWARD_IDS = {
+            330, 334
+    };
+
     public static final int[] CASKET_IDS = {
             2714, 2717, 2720, 3511, 3517, 3519, 7237, 12171, 12180, 10181,
             10183, 10185, 10187, 10189, 10191, 10193, 10195, 10197, 10199,
@@ -153,7 +157,7 @@ public class Resources {
         CLAP, SALUTE
     }
 
-    public static HashMap<Emote, Integer> EMOTES = new HashMap<>();
+    public static HashMap<Emote, Integer> EMOTES = new HashMap<Emote, Integer>();
     static {
         int index = 0;
         for(Emote emote : Emote.values()) {
@@ -166,7 +170,7 @@ public class Resources {
         return ctx.skills.realLevel(skill) >= level;
     }
 
-    public static Callable<Boolean> checkLevels(ClientContext ctx, int attack, int defence, int range, int magic) {
+    public static Callable<Boolean> checkLevels(final ClientContext ctx, final int attack, final int defence, final int range, final int magic) {
         return new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
@@ -178,7 +182,7 @@ public class Resources {
         };
     }
 
-    public static HashMap<Integer, Clue> CLUES = new HashMap<>();
+    public static HashMap<Integer, Clue> CLUES = new HashMap<Integer, Clue>();
     public static int[] CLUE_IDS;
     public static void initClues(ClientContext ctx) {
         // 113/114 Clues
@@ -208,7 +212,7 @@ public class Resources {
         CLUES.put(10228, new EmoteClue(10228, Varrock.ExamCenter, Emote.CLAP, new int[] { WHITE_APRON, GREEN_BOOTS, LEATHER_GLOVES }));
         CLUES.put(10230, new EmoteClue(10230, Varrock.LumberYard, Emote.WAVE, new int[] { HARDLEATHER_BODY, LEATHER_CHAPS, BRONZE_AXE }, checkLevels(ctx, 0, 10, 0, 0)));
         CLUES.put(10232, new EmoteClue(10232, AlKharid.DuelArenaTicketOffice, Emote.BOW, new int[] { IRON_CHAINBODY, LEATHER_CHAPS, COIF }, checkLevels(ctx, 0, 0, 20, 0)));
-        CLUES.put(12162, new EmoteClue(12162, VarrockCastle.Crossroads, Emote.SPIN, new int[] { BLACK_AXE, COIF, RUBY_RING }, checkLevels(ctx, 10, 0, 20, 0)));
+        CLUES.put(12162, new EmoteClue(12162, VarrockCastle.Courtyard, Emote.SPIN, new int[] { BLACK_AXE, COIF, RUBY_RING }, checkLevels(ctx, 10, 0, 20, 0)));
         CLUES.put(12164, new EmoteClue(12164, Falador.GemStore, Emote.WAVE, new int[] { MIRTHIL_PICKAXE, BLACK_PLATEBODY, IRON_KITESHIELD }, checkLevels(ctx, 20, 10, 0, 0)));
 
         CLUES.put(2713, new DigClue(2713, Varrock.RiverDigSpot, new Tile(3167, 3360 ,0)));
@@ -307,7 +311,7 @@ public class Resources {
         CLUE_IDS = new int[CLUES.size()];
         Object[] keys = CLUES.keySet().toArray();
         for(int i = 0; i < keys.length; i++) {
-            CLUE_IDS[i] = (int) keys[i];
+            CLUE_IDS[i] = (Integer) keys[i];
         }
     }
 }
